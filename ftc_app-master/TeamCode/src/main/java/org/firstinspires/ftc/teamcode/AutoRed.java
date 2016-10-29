@@ -24,6 +24,10 @@ public class AutoRed extends BotHardware {
 
         setTime();
 
+
+
+
+
         while (opModeIsActive())
         {
             switch (state)
@@ -32,14 +36,14 @@ public class AutoRed extends BotHardware {
                     setPower(0.25f);
                     state++;
                     break;
-                case 1: //after 1 sec stop to turn
+                case 1: //after 1 sec stop to turn left
                     if(getTime() > 1)
                     {
                         setPower(0);
                         state++;
                     }
                     break;
-                case 2: //first turn 45 degrees //CHANGE
+                case 2: //first turn 45 degrees left //CHANGE
                     setPower(0.35f, -0.35f);
                     if(Math.abs(gyro.getIntegratedZValue()) > 44)
                     {
@@ -52,6 +56,7 @@ public class AutoRed extends BotHardware {
                     state++;
                     break;
                 case 4: //drive until white line
+                case 11:
                     driveGyro(0.3f);
                     if(getTime() > 10)
                     {
@@ -65,7 +70,7 @@ public class AutoRed extends BotHardware {
                         setTime();
                     }
                     break;
-                case 5: //turn
+                case 5: //turn left
                     if(getTime() > 0.2)
                     {
                         gyro.resetZAxisIntegrator();
@@ -86,6 +91,7 @@ public class AutoRed extends BotHardware {
                     }
                     break;
                 case 7: //drive forward until good distance for measuring color of beacon
+                case 13:
                     if(sonar.getUltrasonicLevel() < 21)
                     {
                         far = good = 0;
@@ -121,6 +127,7 @@ public class AutoRed extends BotHardware {
                     }
                     break;
                 case 8: //beacon pusher
+                case 14:
                     try
                     {
                         Thread.sleep(2500);
@@ -184,7 +191,7 @@ public class AutoRed extends BotHardware {
                     setPower(0);
                     state++;
                     break;
-                case 10: //rotate 90 degrees
+                case 10: //rotate 90 degrees right
                     gyro.resetZAxisIntegrator();
                     setPower(0.35f, -0.35f);
                     if(Math.abs(gyro.getIntegratedZValue()) < 89)
@@ -193,22 +200,7 @@ public class AutoRed extends BotHardware {
                         state++;
                     }
                     break;
-                case 11: //drive forward until white line
-                    gyro.resetZAxisIntegrator();
-                    driveGyro(0.3f);
-                    if(getTime() > 10)
-                    {
-                        setPower(0);
-                        state = 100;
-                        break;
-                    }
-                    if(isLeftOnLine())
-                    {
-                        state++;
-                        setTime();
-                    }
-                    break;
-                case 12: //rotate 90 degrees to face beacon again -- check direction of turn
+                case 12: //rotate 90 degrees to face beacon again left
                     gyro.resetZAxisIntegrator();
                     setPower(0.35f, -0.35f);
                     if(Math.abs(gyro.getIntegratedZValue()) < 89)
@@ -217,19 +209,10 @@ public class AutoRed extends BotHardware {
                         state++;
                     }
                     break;
-                case 13: //push beacon -- check code
-                    try
-                    {
-                        Thread.sleep(1250);
-                    }
-                    catch (InterruptedException e)
-                    {
-                        telemetry.addData("ERROR", e.getStackTrace()[0]);
-                    }
-                    setPower(0);
-                    state++;
-                    break;
-                case 14: //drive backwards to center
+                case 15: //fix angle to go backwards
+                    setPower(20);
+                case 16: //drive backwards to center
+
                 default:
                     setPower(0);
                     break;
