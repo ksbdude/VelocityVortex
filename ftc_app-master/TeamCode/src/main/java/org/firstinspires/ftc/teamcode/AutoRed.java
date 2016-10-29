@@ -24,10 +24,6 @@ public class AutoRed extends BotHardware {
 
         setTime();
 
-
-
-
-
         while (opModeIsActive())
         {
             switch (state)
@@ -56,7 +52,7 @@ public class AutoRed extends BotHardware {
                     state++;
                     break;
                 case 4: //drive until white line
-                case 11:
+                case 12:
                     driveGyro(0.3f);
                     if(getTime() > 10)
                     {
@@ -79,6 +75,7 @@ public class AutoRed extends BotHardware {
                     }
                     break;
                 case 6: //getting into proper position on white line
+                case 14:
                     if(Math.abs(gyro.getIntegratedZValue()) > 55)
                     {
                         setPower(-0.35f, 0.35f);
@@ -91,7 +88,7 @@ public class AutoRed extends BotHardware {
                     }
                     break;
                 case 7: //drive forward until good distance for measuring color of beacon
-                case 13:
+                case 15:
                     if(sonar.getUltrasonicLevel() < 21)
                     {
                         far = good = 0;
@@ -127,7 +124,7 @@ public class AutoRed extends BotHardware {
                     }
                     break;
                 case 8: //beacon pusher
-                case 14:
+                case 16:
                     try
                     {
                         Thread.sleep(2500);
@@ -191,28 +188,52 @@ public class AutoRed extends BotHardware {
                     setPower(0);
                     state++;
                     break;
-                case 10: //rotate 90 degrees right
-                    gyro.resetZAxisIntegrator();
-                    setPower(0.35f, -0.35f);
-                    if(Math.abs(gyro.getIntegratedZValue()) < 89)
+                case 10: //drive backwards a little
+                case 17:
+                    if (getTime() < 0.2)
+                    {
+                        setPower(-.35f);
+                    }
+                    else
                     {
                         setPower(0);
-                        state++;
+                        setTime();
                     }
-                    break;
-                case 12: //rotate 90 degrees to face beacon again left
-                    gyro.resetZAxisIntegrator();
-                    setPower(0.35f, -0.35f);
-                    if(Math.abs(gyro.getIntegratedZValue()) < 89)
-                    {
-                        setPower(0);
-                        state++;
-                    }
-                    break;
-                case 15: //fix angle to go backwards
-                    setPower(20);
-                case 16: //drive backwards to center
 
+                case 11: //rotate 90 degrees right
+                    gyro.resetZAxisIntegrator();
+                    setPower(0.35f, -0.35f);
+                    if(Math.abs(gyro.getIntegratedZValue()) > 89)
+                    {
+                        setPower(0);
+                        state++;
+                    }
+                    break;
+                case 13: //rotate 90 degrees to face beacon again left
+                    gyro.resetZAxisIntegrator();
+                    setPower(0.35f, -0.35f);
+                    if(Math.abs(gyro.getIntegratedZValue()) > 89)
+                    {
+                        setPower(0);
+                        state++;
+                    }
+                    break;
+                case 18: //fix angle to go backwards (turn right)
+                    gyro.resetZAxisIntegrator();
+                    setPower(0.35f, -0.35f);
+                    if(Math.abs(gyro.getIntegratedZValue()) > 60)
+                    {
+                        setPower(0);
+                        state++;
+                    }
+                case 19: //drive backwards to center
+                    if (getTime() < 10)
+                        setPower(-0.35f);
+                    else
+                    {
+                        setPower(0);
+                        setTime();
+                    }
                 default:
                     setPower(0);
                     break;
