@@ -7,9 +7,22 @@ public class AutoRed extends BotHardware {
     @Override
     public void runOpMode() throws InterruptedException {
         super.runOpMode();
+
+        short state = 0;
         short close, far, good;
 
         close = far = good = 0;
+
+        while (gyro.isCalibrating())
+        {
+            Thread.sleep(50);
+        }
+
+        waitForStart();
+
+        gyro.resetZAxisIntegrator();
+
+        setTime();
 
         while (opModeIsActive())
         {
@@ -19,14 +32,14 @@ public class AutoRed extends BotHardware {
                     setPower(0.25f);
                     state++;
                     break;
-                case 1: //after 1 sec stop to turn right
+                case 1: //after 1 sec stop to turn left
                     if(getTime() > 1)
                     {
                         setPower(0);
                         state++;
                     }
                     break;
-                case 2: //first turn 45 degrees right
+                case 2: //first turn 45 degrees left //CHANGE
                     setPower(0.35f, -0.35f);
                     if(Math.abs(gyro.getIntegratedZValue()) > 44)
                     {
@@ -38,35 +51,8 @@ public class AutoRed extends BotHardware {
                     gyro.resetZAxisIntegrator();
                     state++;
                     break;
-                case 4://drive until white
-                    driveGyro(0.25f);
-                    if(isWhite()) {
-                        state++;
-                        setTime();
-                    }
-                    break;
-                case 5:
-                    if(getTime() > 0.2) {
-                        gyro.resetZAxisIntegrator();
-                        setPower(-0.25f, 0.25f);
-                        state++;
-                    }
-                case 6:
-                    if(Math.abs(gyro.getIntegratedZValue()) > 55)
-                    {
-                        setPower(-0.35f, 0.35f);
-                    }
-                    else if(Math.abs(gyro.getIntegratedZValue()) > 44)
-                    {
-                        setPower(0f);
-                        gyro.resetZAxisIntegrator();
-                        state++;
-                    }
-                    break;
-
-                //working until here so far
-
-                case 11:
+                case 4: //drive until white line
+                case 12:
                     driveGyro(0.3f);
                     if(getTime() > 10)
                     {
@@ -80,8 +66,29 @@ public class AutoRed extends BotHardware {
                         setTime();
                     }
                     break;
+                case 5: //turn left
+                    if(getTime() > 0.2)
+                    {
+                        gyro.resetZAxisIntegrator();
+                        setPower(0.35f, -0.35f);
+                        state++;
+                    }
+                    break;
+                case 6: //getting into proper position on white line
+                case 14:
+                    if(Math.abs(gyro.getIntegratedZValue()) > 55)
+                    {
+                        setPower(-0.35f, 0.35f);
+                    }
+                    else if(Math.abs(gyro.getIntegratedZValue()) > 44)
+                    {
+                        setPower(0f);
+                        gyro.resetZAxisIntegrator();
+                        state++;
+                    }
+                    break;
                 case 7: //drive forward until good distance for measuring color of beacon
-                case 13:
+                case 15:
                     if(sonar.getUltrasonicLevel() < 21)
                     {
                         far = good = 0;
@@ -117,7 +124,7 @@ public class AutoRed extends BotHardware {
                     }
                     break;
                 case 8: //beacon pusher
-                case 14:
+                case 16:
                     try
                     {
                         Thread.sleep(2500);
@@ -181,33 +188,57 @@ public class AutoRed extends BotHardware {
                     setPower(0);
                     state++;
                     break;
-                case 10: //rotate 90 degrees right
-                    gyro.resetZAxisIntegrator();
-                    setPower(0.35f, -0.35f);
-                    if(Math.abs(gyro.getIntegratedZValue()) < 89)
+                case 10: //drive backwards a little
+                case 17:
+                    if (getTime() < 0.2)
+                    {
+                        setPower(-.35f);
+                    }
+                    else
                     {
                         setPower(0);
-                        state++;
+                        setTime();
                     }
-                    break;
-                case 12: //rotate 90 degrees to face beacon again left
-                    gyro.resetZAxisIntegrator();
-                    setPower(0.35f, -0.35f);
-                    if(Math.abs(gyro.getIntegratedZValue()) < 89)
-                    {
-                        setPower(0);
-                        state++;
-                    }
-                    break;
-                case 15: //fix angle to go backwards
-                    setPower(20);
-                case 16: //drive backwards to center
 
+                case 11: //rotate 90 degrees right
+                    gyro.resetZAxisIntegrator();
+                    setPower(0.35f, -0.35f);
+                    if(Math.abs(gyro.getIntegratedZValue()) > 89)
+                    {
+                        setPower(0);
+                        state++;
+                    }
+                    break;
+                case 13: //rotate 90 degrees to face beacon again left
+                    gyro.resetZAxisIntegrator();
+                    setPower(0.35f, -0.35f);
+                    if(Math.abs(gyro.getIntegratedZValue()) > 89)
+                    {
+                        setPower(0);
+                        state++;
+                    }
+                    break;
+                case 18: //fix angle to go backwards (turn right)
+                    gyro.resetZAxisIntegrator();
+                    setPower(0.35f, -0.35f);
+                    if(Math.abs(gyro.getIntegratedZValue()) > 60)
+                    {
+                        setPower(0);
+                        state++;
+                    }
+                case 19: //drive backwards to center
+                    if (getTime() < 10)
+                        setPower(-0.35f);
+                    else
+                    {
+                        setPower(0);
+                        setTime();
+                    }
                 default:
                     setPower(0);
                     break;
             }
-        updateTelemetry();
+        //updateTelemetry();
         }
     }
 }
