@@ -3,9 +3,11 @@ package org.firstinspires.ftc.teamcode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 @TeleOp(name="AutoBlue", group="Opmode")
-public class AutoRed extends BotHardware {
+public class AutoRed extends BotHardware
+{
     @Override
-    public void runOpMode() throws InterruptedException {
+    public void runOpMode() throws InterruptedException
+    {
         super.runOpMode();
 
         short state = 0;
@@ -238,7 +240,7 @@ public class AutoRed extends BotHardware {
                     setPower(0);
                     break;
             }
-        //updateTelemetry();
+        updateTelemetry();
         }
     }
 }
