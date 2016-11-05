@@ -8,6 +8,7 @@ public class AutoBlue extends BotHardware {
     public void runOpMode() throws InterruptedException {
         super.runOpMode();
 
+
         while (opModeIsActive()) {
             switch(state){
                 case 0:
