@@ -85,7 +85,7 @@ public class BotHardware extends LinearOpMode
         startTime = getRuntime();
     }
 
-    
+
     //custom methods
     public void setPower(float left, float right)
     {
