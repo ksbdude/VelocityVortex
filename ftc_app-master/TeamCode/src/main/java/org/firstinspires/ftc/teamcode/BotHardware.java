@@ -99,7 +99,8 @@ public class BotHardware extends LinearOpMode
         return getRuntime() - startTime;
     }
 
-    public void setTime(){
+    public void setTime()
+    {
         startTime = getRuntime();
     }
 
@@ -112,7 +113,8 @@ public class BotHardware extends LinearOpMode
     }
 
     float errorRoom = 2;
-    public void driveGyro(float power){
+    public void driveGyro(float power)
+    {
         if(gyro.getIntegratedZValue() > errorRoom) {
             setPower(-power, power);
         } else if(gyro.getIntegratedZValue() < -errorRoom) {
@@ -123,7 +125,7 @@ public class BotHardware extends LinearOpMode
     }
 
     float white = 100;
-    public boolean isWhite(){
+    public boolean isOnLine(){
         return ground.red() > white && ground.blue() > white && ground.green() > white;
     }
 }

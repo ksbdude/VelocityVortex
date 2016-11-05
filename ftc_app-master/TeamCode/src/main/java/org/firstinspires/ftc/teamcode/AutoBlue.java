@@ -62,7 +62,7 @@ public class AutoBlue extends BotHardware
                         state = 100;
                         break;
                     }
-                    if(isLeftOnLine())
+                    if(isOnLine())
                     {
                         state ++;
                         setTime();
@@ -120,7 +120,6 @@ public class AutoBlue extends BotHardware
                     else if (good == 2)
                     {
                         setPower(0);
-                        thrower.setPosition(1);
                         state++;
                         close = far = good = 0;
                     }
