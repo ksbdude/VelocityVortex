@@ -238,7 +238,7 @@ public class AutoRed extends BotHardware {
                     setPower(0);
                     break;
             }
-        updateTelemetry();
+        //updateTelemetry();
         }
     }
 }
