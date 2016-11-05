@@ -41,8 +41,8 @@ public class AutoBlue extends BotHardware
                         state++;
                     }
                     break;
-                case 2: //first turn 45 degrees left //CHANGE
-                    setPower(0.35f, -0.35f);
+                case 2: //first turn 45 degrees right //CHANGE
+                    setPower(-0.35f, 0.35f);
                     if(Math.abs(gyro.getIntegratedZValue()) > 44)
                     {
                         setPower(0);
@@ -68,11 +68,11 @@ public class AutoBlue extends BotHardware
                         setTime();
                     }
                     break;
-                case 5: //turn left
+                case 5: //turn right
                     if(getTime() > 0.2)
                     {
                         gyro.resetZAxisIntegrator();
-                        setPower(0.35f, -0.35f);
+                        setPower(-0.35f, 0.35f);
                         state++;
                     }
                     break;
@@ -80,7 +80,7 @@ public class AutoBlue extends BotHardware
                 case 14:
                     if(Math.abs(gyro.getIntegratedZValue()) > 55)
                     {
-                        setPower(-0.35f, 0.35f);
+                        setPower(0.35f, -0.35f);
                     }
                     else if(Math.abs(gyro.getIntegratedZValue()) > 44)
                     {
@@ -150,7 +150,7 @@ public class AutoBlue extends BotHardware
                         }catch (InterruptedException e){
                             telemetry.addData("ERROR", e.getStackTrace()[0]);
                         }
-                        beaconServo.setPosition(1);
+                        beaconServo.setPosition(0);
                     }
                     else
                     {
@@ -164,7 +164,7 @@ public class AutoBlue extends BotHardware
                         {
                             telemetry.addData("ERROR", e.getStackTrace()[0]);
                         }
-                        beaconServo.setPosition(0);
+                        beaconServo.setPosition(1);
                     }
                     try
                     {
@@ -201,27 +201,27 @@ public class AutoBlue extends BotHardware
                         setTime();
                     }
 
-                case 11: //rotate 90 degrees right
+                case 11: //rotate 90 degrees left
                     gyro.resetZAxisIntegrator();
-                    setPower(0.35f, -0.35f);
+                    setPower(-0.35f, 0.35f);
                     if(Math.abs(gyro.getIntegratedZValue()) > 89)
                     {
                         setPower(0);
                         state++;
                     }
                     break;
-                case 13: //rotate 90 degrees to face beacon again left
+                case 13: //rotate 90 degrees to face beacon again right
                     gyro.resetZAxisIntegrator();
-                    setPower(0.35f, -0.35f);
+                    setPower(-0.35f, 0.35f);
                     if(Math.abs(gyro.getIntegratedZValue()) > 89)
                     {
                         setPower(0);
                         state++;
                     }
                     break;
-                case 18: //fix angle to go backwards (turn right)
+                case 18: //fix angle to go backwards (turn left)
                     gyro.resetZAxisIntegrator();
-                    setPower(0.35f, -0.35f);
+                    setPower(-0.35f, 0.35f);
                     if(Math.abs(gyro.getIntegratedZValue()) > 60)
                     {
                         setPower(0);
