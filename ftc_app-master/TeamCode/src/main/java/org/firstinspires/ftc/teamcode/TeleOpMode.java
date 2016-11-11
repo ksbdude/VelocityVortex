@@ -13,7 +13,7 @@ public class TeleOpMode {
 
             while (opModeIsActive()) {
                 updateTelemetry();
-                setPower(gamepad1.left_stick_x, gamepad1.right_stick_x);
+                setPower(gamepad1.left_stick_x, gamepad1.right_stick_y);
             }
         }
     }
