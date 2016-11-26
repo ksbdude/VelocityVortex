@@ -134,6 +134,7 @@ public class AutoBlue extends BotHardware
                     {
                         telemetry.addData("ERROR", e.getStackTrace()[0]);
                     }
+                    /*
                     if(beacon.red() < 5 && beacon.blue() < 5)
                     {
                         beaconServo.setPosition(0.1);
@@ -166,6 +167,7 @@ public class AutoBlue extends BotHardware
                         }
                         beaconServo.setPosition(1);
                     }
+                    */
                     try
                     {
                         Thread.sleep(1000);

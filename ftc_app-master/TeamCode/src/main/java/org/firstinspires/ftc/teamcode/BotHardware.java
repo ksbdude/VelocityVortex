@@ -9,13 +9,28 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.UltrasonicSensor;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
-@TeleOp(name="Driver TeleOp", group="Opmode")
+@TeleOp(name="Bot Hardware", group="Opmode")
 public class BotHardware extends LinearOpMode
 {
     /* Declare OpMode members. */
     private ElapsedTime runtime = new ElapsedTime();
 
     DcMotor MotorLeftFront = null;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     DcMotor MotorLeftBack = null;
     DcMotor MotorRightFront = null;
     DcMotor MotorRightBack = null;

@@ -2,7 +2,7 @@ package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
-@TeleOp(name="AutoBlue", group="Opmode")
+@TeleOp(name="AutoRed", group="Opmode")
 public class AutoRed extends BotHardware
 {
     @Override
@@ -134,6 +134,7 @@ public class AutoRed extends BotHardware
                     {
                         telemetry.addData("ERROR", e.getStackTrace()[0]);
                     }
+                    /*
                     if(beacon.red() < 5 && beacon.blue() < 5)
                     {
                         beaconServo.setPosition(0.1);
@@ -166,6 +167,7 @@ public class AutoRed extends BotHardware
                         }
                         beaconServo.setPosition(0);
                     }
+                    */
                     try
                     {
                         Thread.sleep(1000);
