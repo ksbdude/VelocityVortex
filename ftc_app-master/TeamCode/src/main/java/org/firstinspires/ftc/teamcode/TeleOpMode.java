@@ -5,7 +5,7 @@ import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 
 public class TeleOpMode {
 
-    @TeleOp(name="Driver TeleOp", group="Opmode")
+    @TeleOp(name="TeleOpMode", group="Opmode")
     public class TemplateOpMode_Linear extends BotHardware {
         @Override
         public void runOpMode() throws InterruptedException {

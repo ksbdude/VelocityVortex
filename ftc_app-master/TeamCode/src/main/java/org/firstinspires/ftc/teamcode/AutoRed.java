@@ -2,7 +2,7 @@ package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
-@TeleOp(name="AutoRed", group="Opmode")
+@TeleOp(name="AutoRed", group="Autonomous")
 public class AutoRed extends BotHardware
 {
     @Override

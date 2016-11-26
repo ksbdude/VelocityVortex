@@ -9,7 +9,7 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.UltrasonicSensor;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
-@TeleOp(name="Bot Hardware", group="Opmode")
+@TeleOp(name="BotHardware", group="Opmode")
 public class BotHardware extends LinearOpMode
 {
     /* Declare OpMode members. */
