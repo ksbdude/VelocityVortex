@@ -16,21 +16,6 @@ public class BotHardware extends LinearOpMode
     private ElapsedTime runtime = new ElapsedTime();
 
     DcMotor MotorLeftFront = null;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     DcMotor MotorLeftBack = null;
     DcMotor MotorRightFront = null;
     DcMotor MotorRightBack = null;
@@ -49,7 +34,7 @@ public class BotHardware extends LinearOpMode
         try
         {
             MotorLeftFront = hardwareMap.dcMotor.get("left_front_drive");
-            MotorLeftBack = hardwareMap.dcMotor.get("right__front_drive");
+            MotorLeftBack = hardwareMap.dcMotor.get("right_front_drive");
             MotorRightFront = hardwareMap.dcMotor.get("left_back_drive");
             MotorRightBack = hardwareMap.dcMotor.get("right_back_drive");
         }
@@ -140,7 +125,8 @@ public class BotHardware extends LinearOpMode
     }
 
     float white = 100;
-    public boolean isOnLine(){
+    public boolean isOnLine()
+    {
         return ground.red() > white && ground.blue() > white && ground.green() > white;
     }
 }

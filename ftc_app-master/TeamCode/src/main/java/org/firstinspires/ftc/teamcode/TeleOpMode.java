@@ -3,10 +3,9 @@ package org.firstinspires.ftc.teamcode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 
-public class TeleOpMode {
-
     @TeleOp(name="TeleOpMode", group="Opmode")
-    public class TemplateOpMode_Linear extends BotHardware {
+    public class TeleOpMode extends BotHardware
+    {
         @Override
         public void runOpMode() throws InterruptedException {
             super.runOpMode();
@@ -17,4 +16,4 @@ public class TeleOpMode {
             }
         }
     }
-}
+
