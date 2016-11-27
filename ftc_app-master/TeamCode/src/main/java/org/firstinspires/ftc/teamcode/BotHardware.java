@@ -15,10 +15,10 @@ public class BotHardware extends LinearOpMode
     /* Declare OpMode members. */
     private ElapsedTime runtime = new ElapsedTime();
 
-    DcMotor MotorLeftFront = null;
-    DcMotor MotorLeftBack = null;
-    DcMotor MotorRightFront = null;
-    DcMotor MotorRightBack = null;
+    DcMotor wfr = null;
+    DcMotor wbr = null;
+    DcMotor wfl = null;
+    DcMotor wbl = null;
     ModernRoboticsI2cGyro gyro;
     UltrasonicSensor sonar;
     ColorSensor ground;
@@ -33,10 +33,18 @@ public class BotHardware extends LinearOpMode
     {
         try
         {
-            MotorLeftFront = hardwareMap.dcMotor.get("left_front_drive");
-            MotorLeftBack = hardwareMap.dcMotor.get("right_front_drive");
-            MotorRightFront = hardwareMap.dcMotor.get("left_back_drive");
-            MotorRightBack = hardwareMap.dcMotor.get("right_back_drive");
+            wfr = hardwareMap.dcMotor.get("wfr");
+            wbr = hardwareMap.dcMotor.get("wbr");
+            wfl = hardwareMap.dcMotor.get("wfl");
+            wbl = hardwareMap.dcMotor.get("wbl");
+
+            wbr.setDirection(DcMotor.Direction.REVERSE);
+            wfr.setDirection(DcMotor.Direction.REVERSE);
+
+            wfr.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODERS);
+            wbr.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODERS);
+            wfl.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODERS);
+            wbl.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODERS);
         }
         catch (Exception e)
         {
@@ -83,10 +91,10 @@ public class BotHardware extends LinearOpMode
     //custom methods
     public void setPower(float left, float right)
     {
-        MotorLeftFront.setPower(-left);
-        MotorLeftBack.setPower(-left);
-        MotorRightFront.setPower(right);
-        MotorRightBack.setPower(right);
+        wfl.setPower(-left);
+        wbl.setPower(-left);
+        wfr.setPower(right);
+        wbr.setPower(right);
     }
 
     public void setPower(float power)
