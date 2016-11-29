@@ -1,7 +1,7 @@
 package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
-import com.qualcomm.robotcore.eventloop.opmode.Disabled; //WHAT THE HECK
+import com.qualcomm.robotcore.eventloop.opmode.Disabled; 
 
     @TeleOp(name="TeleOpMode", group="Opmode")
     public class TeleOpMode extends BotHardware
