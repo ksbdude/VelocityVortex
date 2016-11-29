@@ -11,7 +11,6 @@ import com.qualcomm.robotcore.eventloop.opmode.Disabled;
             super.runOpMode();
 
             while (opModeIsActive()) {
-                updateTelemetry();
                 setPower(gamepad1.left_stick_x, gamepad1.right_stick_y);
             }
         }
