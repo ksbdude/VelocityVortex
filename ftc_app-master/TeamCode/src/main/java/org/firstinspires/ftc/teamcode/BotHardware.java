@@ -22,6 +22,9 @@ public class BotHardware extends LinearOpMode
     ModernRoboticsI2cGyro gyro;
     UltrasonicSensor sonar;
     ColorSensor ground;
+    ColorSensor beacon;
+    ColorSensor beaconLeft;
+    ColorSensor beaconRight;
     public int good = 0;
 
     int state = 0;
@@ -66,6 +69,30 @@ public class BotHardware extends LinearOpMode
         catch (Exception e)
         {
             telemetry.addData("[ERROR]:", "color sensor setup");
+        }
+        try
+        {
+            beacon = hardwareMap.colorSensor.get("beacon");
+        }
+        catch (Exception e)
+        {
+            telemetry.addData("[Error]:", "beacon color sensor setup");
+        }
+        try
+        {
+            beaconLeft = hardwareMap.colorSensor.get("beaconLeft");
+        }
+        catch (Exception e)
+        {
+            telemetry.addData("[Error]:", "left beacon color sensor setup");
+        }
+        try
+        {
+            beaconRight = hardwareMap.colorSensor.get("beaconRight");
+        }
+        catch (Exception e)
+        {
+            telemetry.addData("[Error]:", "right beacon color sensor setup");
         }
         try
         {

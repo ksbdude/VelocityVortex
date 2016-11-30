@@ -1,7 +1,7 @@
 package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
-import com.qualcomm.robotcore.eventloop.opmode.Disabled; 
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 
     @TeleOp(name="TeleOpMode", group="Opmode")
     public class TeleOpMode extends BotHardware
@@ -14,5 +14,11 @@ import com.qualcomm.robotcore.eventloop.opmode.Disabled;
                 setPower(gamepad1.left_stick_x, gamepad1.right_stick_y);
             }
         }
+
+
+
+
+
+
     }
 
