@@ -70,16 +70,16 @@ public class TeleOpM extends BotHardware {
             leftWing.setPosition(Range.scale(gamepad2.left_trigger, 0, 1, 1, 0.2));
             rightWing.setPosition(Range.scale(gamepad2.right_trigger, 0, 1, 0.2, 1));
             */
-            if(gamepad2.x && beaconLeft.getPosition() != 1)
-                beaconLeft.setPosition(1);
-            else if(gamepad2.x && beaconLeft.getPosition() == 1)
-                beaconLeft.setPosition(0);
+            if(gamepad2.x && beaconLeftServo.getPosition() != 1)
+                beaconLeftServo.setPosition(1);
+            else if(gamepad2.x && beaconLeftServo.getPosition() == 1)
+                beaconLeftServo.setPosition(0);
 
 
-            if(gamepad2.b && beaconRight.getPosition() != 1)
-                beaconLeft.setPosition(1);
-            else if(gamepad.b && beaconRight.getPosition() ==1)
-                beaconRight.setPosition(0);
+            if(gamepad2.b && beaconRightServo.getPosition() != 1)
+                beaconRightServo.setPosition(1);
+            else if(gamepad2.b && beaconRightServo.getPosition() ==1)
+                beaconRightServo.setPosition(0);
 
 
 

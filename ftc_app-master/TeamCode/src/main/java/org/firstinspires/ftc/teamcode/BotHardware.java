@@ -6,8 +6,10 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.ColorSensor;
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.hardware.UltrasonicSensor;
 import com.qualcomm.robotcore.util.ElapsedTime;
+import com.qualcomm.robotcore.util.Range;
 
 @TeleOp(name="BotHardware", group="Opmode")
 public class BotHardware extends LinearOpMode
@@ -19,10 +21,12 @@ public class BotHardware extends LinearOpMode
     DcMotor wbr = null;
     DcMotor wfl = null;
     DcMotor wbl = null;
+
+    Servo beaconLeftServo, beaconRightServo;
+
     ModernRoboticsI2cGyro gyro;
     UltrasonicSensor sonar;
     ColorSensor ground;
-    ColorSensor beacon;
     ColorSensor beaconLeft;
     ColorSensor beaconRight;
     public int good = 0;
@@ -69,14 +73,6 @@ public class BotHardware extends LinearOpMode
         catch (Exception e)
         {
             telemetry.addData("[ERROR]:", "color sensor setup");
-        }
-        try
-        {
-            beacon = hardwareMap.colorSensor.get("beacon");
-        }
-        catch (Exception e)
-        {
-            telemetry.addData("[Error]:", "beacon color sensor setup");
         }
         try
         {
@@ -163,6 +159,14 @@ public class BotHardware extends LinearOpMode
     public boolean isOnLine()
     {
         return ground.red() > white && ground.blue() > white && ground.green() > white;
+    }
+
+    float scaleInput(float input)
+    {
+        input = Range.clip(input, -1, 1);
+        if (input > 0)
+            return (float)Math.pow(input, 4);
+        return -(float)Math.pow(input, 4);
     }
 }
 

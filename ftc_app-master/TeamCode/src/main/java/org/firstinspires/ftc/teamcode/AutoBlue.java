@@ -134,29 +134,31 @@ public class AutoBlue extends BotHardware
                     {
                         telemetry.addData("ERROR", e.getStackTrace()[0]);
                     }
-                    /*
-                    if(beacon.red() < 5 && beacon.blue() < 5)
+                    if(beaconLeft.red() < 5 && beaconLeft.blue() < 5
+                            && beaconRight.red() < 5 && beaconRight.blue() < 5)
                     {
-                        beaconServo.setPosition(0.1);
+                        beaconRightServo.setPosition(0.1);
+                        beaconLeftServo.setPosition(0.1);
                         telemetry.addData("Beacon", "FAILED");
                         state = 100;
                         break;
                     }
-                    if(beacon.red() > beacon.blue())
+                    if(beaconRight.red() > beaconRight.blue() && beaconLeft.red() < beaconLeft.blue() )
                     {
-                        telemetry.addData("RED color: ", beacon.red());
-                        telemetry.addData("BLUE color: ", beacon.blue());
+                        telemetry.addData("RED color: ", beaconRight.red());
+                        telemetry.addData("BLUE color: ", beaconRight.blue());
                         try {
                             Thread.sleep(2000);
                         }catch (InterruptedException e){
                             telemetry.addData("ERROR", e.getStackTrace()[0]);
                         }
-                        beaconServo.setPosition(0);
+                        beaconRightServo.setPosition(1);
+                        beaconLeftServo.setPosition(0);
                     }
                     else
                     {
-                        telemetry.addData("BLUE color: ", beacon.blue());
-                        telemetry.addData("RED color: ", beacon.red());
+                        telemetry.addData("BLUE color: ", beaconRight.blue());
+                        telemetry.addData("RED color: ", beaconRight.red());
                         try
                         {
                             Thread.sleep(2000);
@@ -165,9 +167,9 @@ public class AutoBlue extends BotHardware
                         {
                             telemetry.addData("ERROR", e.getStackTrace()[0]);
                         }
-                        beaconServo.setPosition(1);
+                        beaconRightServo.setPosition(0);
+                        beaconLeftServo.setPosition(1);
                     }
-                    */
                     try
                     {
                         Thread.sleep(1000);
