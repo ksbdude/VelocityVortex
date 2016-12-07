@@ -9,9 +9,12 @@ import com.qualcomm.robotcore.eventloop.opmode.Disabled;
         @Override
         public void runOpMode() throws InterruptedException
         {
+            telemetry.addData("", "1");
             super.runOpMode();
 
+            telemetry.addData("", "2");
             while (opModeIsActive()) {
+                telemetry.addData("", "3");
                 setPower(gamepad1.left_stick_x, gamepad1.right_stick_y);
             }
         }

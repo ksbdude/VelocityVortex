@@ -4,6 +4,7 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 
 @TeleOp(name="TeleOpM", group="Opmode")
+@Disabled
 public class TeleOpM extends BotHardware {
     @Override
     public void runOpMode() throws InterruptedException {
@@ -17,7 +18,7 @@ public class TeleOpM extends BotHardware {
 
         waitForStart();
 
-        while (opModeIsActive()) {
+        /*while (opModeIsActive()) {
             // ----------------
             // gamepad1:
             // ----------------
@@ -41,7 +42,7 @@ public class TeleOpM extends BotHardware {
                 setPower(turnPower, -turnPower);
             else
                 setPower(-wheelPower);
-
+*/
             // --------------
             // gamepad2;
             // --------------
@@ -70,7 +71,7 @@ public class TeleOpM extends BotHardware {
             leftWing.setPosition(Range.scale(gamepad2.left_trigger, 0, 1, 1, 0.2));
             rightWing.setPosition(Range.scale(gamepad2.right_trigger, 0, 1, 0.2, 1));
             */
-            if(gamepad2.x && beaconLeftServo.getPosition() != 1)
+            /*if(gamepad2.x && beaconLeftServo.getPosition() != 1)
                 beaconLeftServo.setPosition(1);
             else if(gamepad2.x && beaconLeftServo.getPosition() == 1)
                 beaconLeftServo.setPosition(0);
@@ -81,7 +82,7 @@ public class TeleOpM extends BotHardware {
             else if(gamepad2.b && beaconRightServo.getPosition() ==1)
                 beaconRightServo.setPosition(0);
 
-
+*/
 
 
             /*
@@ -100,7 +101,7 @@ public class TeleOpM extends BotHardware {
 
             waitOneFullHardwareCycle();
 
-            */
-        }
+
+        } */
     }
 }
