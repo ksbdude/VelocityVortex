@@ -55,8 +55,8 @@ public class BotHardware extends LinearOpMode
         } catch (Exception e) {
             telemetry.addData("[ERROR]:", "motor error");
         }
-     //WE ADDED THIS take out when we take out the comments
-        /*try
+        //GYRO SENSOR
+        try
         {
             gyro = (ModernRoboticsI2cGyro)hardwareMap.gyroSensor.get("gyro");
             gyro.calibrate();
@@ -65,6 +65,7 @@ public class BotHardware extends LinearOpMode
         {
             telemetry.addData("[ERROR]:", "gyro sensor setup");
         }
+        //GROUND COLOR SENSOR
         try
         {
             ground = hardwareMap.colorSensor.get("ground");
@@ -73,6 +74,7 @@ public class BotHardware extends LinearOpMode
         {
             telemetry.addData("[ERROR]:", "color sensor setup");
         }
+        //BEACON LEFT COLOR SENSOR
         try
         {
             beaconLeft = hardwareMap.colorSensor.get("beaconLeft");
@@ -81,6 +83,7 @@ public class BotHardware extends LinearOpMode
         {
             telemetry.addData("[Error]:", "left beacon color sensor setup");
         }
+        //BEACON RIGHT COLOR SENSOR
         try
         {
             beaconRight = hardwareMap.colorSensor.get("beaconRight");
@@ -89,6 +92,7 @@ public class BotHardware extends LinearOpMode
         {
             telemetry.addData("[Error]:", "right beacon color sensor setup");
         }
+        //ULTRASONIC DISTANCE SENSOR
         try
         {
             sonar = hardwareMap.ultrasonicSensor.get("sonar");
@@ -101,7 +105,6 @@ public class BotHardware extends LinearOpMode
         {
             Thread.sleep(50);
         }
-*/
         telemetry.addData("Status", "Initialized");
         telemetry.update();
 
@@ -138,12 +141,12 @@ public class BotHardware extends LinearOpMode
     {
         telemetry.addData("Time", getTime());
         telemetry.addData("State", state);
-        //telemetry.addData("Gyro", gyro.getIntegratedZValue());
-        //telemetry.update();
+        telemetry.addData("Gyro", gyro.getIntegratedZValue());
+        telemetry.update();
     }
 
     float errorRoom = 2;
-    /*public void driveGyro(float power)
+    public void driveGyro(float power)
     {
         if(gyro.getIntegratedZValue() > errorRoom) {
             setPower(-power, power);
@@ -158,7 +161,7 @@ public class BotHardware extends LinearOpMode
     public boolean isOnLine()
     {
         return ground.red() > white && ground.blue() > white && ground.green() > white;
-    }*/
+    }
 
     float scaleInput(float input)
     {

@@ -9,7 +9,7 @@ public class AutoRed extends BotHardware
     @Override
     public void runOpMode() throws InterruptedException
     {
-        /* super.runOpMode();
+        super.runOpMode();
 
         short state = 0;
         short close, far, good;
@@ -245,6 +245,6 @@ public class AutoRed extends BotHardware
                     break;
             }
         updateTelemetry();
-        } */
+        }
     }
 }

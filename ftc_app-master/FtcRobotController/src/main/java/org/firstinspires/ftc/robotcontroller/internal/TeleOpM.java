@@ -1,9 +1,8 @@
 package org.firstinspires.ftc.robotcontroller.internal;
-//omg it says no changed detected....
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 @TeleOp(name="TeleOpM", group="Opmode")
-@Disabled
 public class TeleOpM extends BotHardware {
     @Override
     public void runOpMode() throws InterruptedException {
@@ -17,7 +16,7 @@ public class TeleOpM extends BotHardware {
 
         waitForStart();
 
-        /*while (opModeIsActive()) {
+        while (opModeIsActive()) {
             // ----------------
             // gamepad1:
             // ----------------
@@ -41,36 +40,12 @@ public class TeleOpM extends BotHardware {
                 setPower(turnPower, -turnPower);
             else
                 setPower(-wheelPower);
-*/
+
             // --------------
             // gamepad2;
             // --------------
 
-
-            /*  //Arm controls
-            armPower = gamepad2.right_stick_y;
-            // must hold down 'a' before being able to move arm (a for activate)
-            if (gamepad2.a) {
-                armPower = gamepad2.left_stick_y;
-                armPower = scaleInput(armPower);
-            } else {
-                armPower = 0f;
-            }
-            if (gamepad2.right_bumper) {
-                armPower = scaleInput(armPower) / 2;
-            }
-            arm.setPower(armPower);
-            if(gamepad1.a)
-                thrower.setPosition(1);
-            else
-                thrower.setPosition(0);
-
-
-            // controlling the wings
-            leftWing.setPosition(Range.scale(gamepad2.left_trigger, 0, 1, 1, 0.2));
-            rightWing.setPosition(Range.scale(gamepad2.right_trigger, 0, 1, 0.2, 1));
-            */
-            /*if(gamepad2.x && beaconLeftServo.getPosition() != 1)
+            if(gamepad2.x && beaconLeftServo.getPosition() != 1)
                 beaconLeftServo.setPosition(1);
             else if(gamepad2.x && beaconLeftServo.getPosition() == 1)
                 beaconLeftServo.setPosition(0);
@@ -81,11 +56,7 @@ public class TeleOpM extends BotHardware {
             else if(gamepad2.b && beaconRightServo.getPosition() ==1)
                 beaconRightServo.setPosition(0);
 
-*/
-
-
-            /*
-            previous version of button pusher controller
+            /*previous version of button pusher controller
 
             if(gamepad2.x)
                 beaconLeft.setPosition(1);
@@ -99,8 +70,8 @@ public class TeleOpM extends BotHardware {
                 beaconRight.setPosition(0);
 
             waitOneFullHardwareCycle();
+            */
 
-
-        } */
+        }
     }
 }

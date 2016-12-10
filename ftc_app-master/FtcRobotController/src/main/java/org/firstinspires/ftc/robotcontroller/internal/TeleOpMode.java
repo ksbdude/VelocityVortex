@@ -2,6 +2,7 @@ package org.firstinspires.ftc.robotcontroller.internal;
 
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
+//TO TEST
 @TeleOp(name="TeleOpMode", group="Opmode")
     public class TeleOpMode extends BotHardware
     {
@@ -12,7 +13,7 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
             while (opModeIsActive())
             {
-                setPower(gamepad1.left_stick_x, gamepad1.right_stick_y);
+                setPower(-gamepad1.left_stick_x, -gamepad1.right_stick_y);
             }
         }
     }
