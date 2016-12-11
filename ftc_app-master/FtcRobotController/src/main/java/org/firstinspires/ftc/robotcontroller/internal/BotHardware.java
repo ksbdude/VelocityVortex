@@ -26,11 +26,11 @@ public class BotHardware extends LinearOpMode
 
     Servo beaconLeftServo, beaconRightServo;
 
-    ModernRoboticsI2cGyro gyro;
-    UltrasonicSensor sonar;
-    ColorSensor ground;
-    ColorSensor beaconLeft;
-    ColorSensor beaconRight;
+//    ModernRoboticsI2cGyro gyro;
+//    UltrasonicSensor sonar;
+//    ColorSensor ground;
+//    ColorSensor beaconLeft;
+//    ColorSensor beaconRight;
     public int good = 0;
 
     int state = 0;
@@ -55,56 +55,64 @@ public class BotHardware extends LinearOpMode
         } catch (Exception e) {
             telemetry.addData("[ERROR]:", "motor error");
         }
+        try {
+            beaconLeftServo = hardwareMap.servo.get("beaconLeftServo");
+            beaconRightServo = hardwareMap.servo.get("beaconRightServo");
+        }
+        catch(Exception e)
+        {
+            telemetry.addData("[ERROR]:", "servo error");
+        }
         //GYRO SENSOR
-        try
-        {
-            gyro = (ModernRoboticsI2cGyro)hardwareMap.gyroSensor.get("gyro");
-            gyro.calibrate();
-        }
-        catch (Exception e)
-        {
-            telemetry.addData("[ERROR]:", "gyro sensor setup");
-        }
-        //GROUND COLOR SENSOR
-        try
-        {
-            ground = hardwareMap.colorSensor.get("ground");
-        }
-        catch (Exception e)
-        {
-            telemetry.addData("[ERROR]:", "color sensor setup");
-        }
-        //BEACON LEFT COLOR SENSOR
-        try
-        {
-            beaconLeft = hardwareMap.colorSensor.get("beaconLeft");
-        }
-        catch (Exception e)
-        {
-            telemetry.addData("[Error]:", "left beacon color sensor setup");
-        }
-        //BEACON RIGHT COLOR SENSOR
-        try
-        {
-            beaconRight = hardwareMap.colorSensor.get("beaconRight");
-        }
-        catch (Exception e)
-        {
-            telemetry.addData("[Error]:", "right beacon color sensor setup");
-        }
-        //ULTRASONIC DISTANCE SENSOR
-        try
-        {
-            sonar = hardwareMap.ultrasonicSensor.get("sonar");
-        }
-        catch (Exception e)
-        {
-            telemetry.addData("[ERROR]:", "sonar sensor setup");
-        }
-        while (gyro.isCalibrating())
-        {
-            Thread.sleep(50);
-        }
+//        try
+//        {
+//            gyro = (ModernRoboticsI2cGyro)hardwareMap.gyroSensor.get("gyro");
+//            gyro.calibrate();
+//        }
+//        catch (Exception e)
+//        {
+//            telemetry.addData("[ERROR]:", "gyro sensor setup");
+//        }
+//        //GROUND COLOR SENSOR
+//        try
+//        {
+//            ground = hardwareMap.colorSensor.get("ground");
+//        }
+//        catch (Exception e)
+//        {
+//            telemetry.addData("[ERROR]:", "color sensor setup");
+//        }
+//        //BEACON LEFT COLOR SENSOR
+//        try
+//        {
+//            beaconLeft = hardwareMap.colorSensor.get("beaconLeft");
+//        }
+//        catch (Exception e)
+//        {
+//            telemetry.addData("[Error]:", "left beacon color sensor setup");
+//        }
+//        //BEACON RIGHT COLOR SENSOR
+//        try
+//        {
+//            beaconRight = hardwareMap.colorSensor.get("beaconRight");
+//        }
+//        catch (Exception e)
+//        {
+//            telemetry.addData("[Error]:", "right beacon color sensor setup");
+//        }
+//        //ULTRASONIC DISTANCE SENSOR
+//        try
+//        {
+//            sonar = hardwareMap.ultrasonicSensor.get("sonar");
+//        }
+//        catch (Exception e)
+//        {
+//            telemetry.addData("[ERROR]:", "sonar sensor setup");
+//        }
+//        while (gyro.isCalibrating())
+//        {
+//            Thread.sleep(50);
+//        }
         telemetry.addData("Status", "Initialized");
         telemetry.update();
 
@@ -116,10 +124,10 @@ public class BotHardware extends LinearOpMode
     //custom methods
     public void setPower(float left, float right)
     {
-        wfl.setPower(-left);
-        wbl.setPower(-left);
-        wfr.setPower(right);
-        wbr.setPower(right);
+        wfl.setPower(left);
+        wbl.setPower(left);
+        wfr.setPower(-right);
+        wbr.setPower(-right);
     }
 
     public void setPower(float power)
@@ -141,27 +149,27 @@ public class BotHardware extends LinearOpMode
     {
         telemetry.addData("Time", getTime());
         telemetry.addData("State", state);
-        telemetry.addData("Gyro", gyro.getIntegratedZValue());
+//        telemetry.addData("Gyro", gyro.getIntegratedZValue());
         telemetry.update();
     }
 
-    float errorRoom = 2;
-    public void driveGyro(float power)
-    {
-        if(gyro.getIntegratedZValue() > errorRoom) {
-            setPower(-power, power);
-        } else if(gyro.getIntegratedZValue() < -errorRoom) {
-            setPower(power, -power);
-        } else {
-            setPower(power);
-        }
-    }
-
-    float white = 100;
-    public boolean isOnLine()
-    {
-        return ground.red() > white && ground.blue() > white && ground.green() > white;
-    }
+//    float errorRoom = 2;
+//    public void driveGyro(float power)
+//    {
+//        if(gyro.getIntegratedZValue() > errorRoom) {
+//            setPower(-power, power);
+//        } else if(gyro.getIntegratedZValue() < -errorRoom) {
+//            setPower(power, -power);
+//        } else {
+//            setPower(power);
+//        }
+//    }
+//
+//    float white = 100;
+//    public boolean isOnLine()
+//    {
+//        return ground.red() > white && ground.blue() > white && ground.green() > white;
+//    }
 
     float scaleInput(float input)
     {

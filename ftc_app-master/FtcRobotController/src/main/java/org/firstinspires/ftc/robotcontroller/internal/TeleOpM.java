@@ -12,48 +12,56 @@ public class TeleOpM extends BotHardware {
 
         // power values
         float wheelPower, turnPower;
-        //float armPower;  //arm variable
+        //float armPower;
 
         waitForStart();
 
         while (opModeIsActive()) {
             // ----------------
-            // gamepad1:
+            // gamepad1
             // ----------------
 
-            wheelPower = gamepad1.left_stick_y;
-            turnPower = -gamepad1.right_stick_x;
+            //inverted
+            telemetry.addData("", "1");
+            wheelPower = gamepad1.left_stick_x;
+            telemetry.addData("", "2");
+            turnPower = -gamepad1.right_stick_y;
+            telemetry.addData("", "3");
 
-            if (gamepad1.right_bumper) {
+            if (gamepad1.right_bumper)
+            {
                 wheelPower = scaleInput(wheelPower) / 2;
                 turnPower = scaleInput(turnPower) / 2;
-            } else if (gamepad1.left_bumper) {
+            } else if (gamepad1.left_bumper)
+            {
                 wheelPower = scaleInput(wheelPower) / 4;
                 turnPower = scaleInput(turnPower) / 4;
-            } else {
+            } else
+            {
                 wheelPower = scaleInput(wheelPower);
                 turnPower = scaleInput(turnPower);
             }
 
             // allows for tighter point turns
             if (Math.abs(turnPower) > 0.05f)
-                setPower(turnPower, -turnPower);
+                setPower(-turnPower, turnPower);
             else
-                setPower(-wheelPower);
+                setPower(wheelPower);
 
             // --------------
-            // gamepad2;
+            // gamepad2
             // --------------
 
-            if(gamepad2.x && beaconLeftServo.getPosition() != 1)
-                beaconLeftServo.setPosition(1);
-            else if(gamepad2.x && beaconLeftServo.getPosition() == 1)
+            if(gamepad2.x) {
                 beaconLeftServo.setPosition(0);
+            }
+            else
+                beaconLeftServo.setPosition(1);
 
 
-            if(gamepad2.b && beaconRightServo.getPosition() != 1)
+            if(gamepad2.b)
                 beaconRightServo.setPosition(1);
-            else if(gamepad2.b && beaconRightServo.getPosition() ==1)
+            else
                 beaconRightServo.setPosition(0);
 
             /*previous version of button pusher controller
