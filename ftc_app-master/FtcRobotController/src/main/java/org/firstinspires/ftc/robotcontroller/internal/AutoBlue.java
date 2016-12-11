@@ -154,7 +154,7 @@ public class AutoBlue extends BotHardware
 //                            telemetry.addData("ERROR", e.getStackTrace()[0]);
 //                        }
 //                        beaconRightServo.setPosition(1);
-//                        beaconLeftServo.setPosition(0);
+//                        beaconLeftServo.setPosition(1);
 //                    }
 //                    else
 //                    {
@@ -169,7 +169,7 @@ public class AutoBlue extends BotHardware
 //                            telemetry.addData("ERROR", e.getStackTrace()[0]);
 //                        }
 //                        beaconRightServo.setPosition(0);
-//                        beaconLeftServo.setPosition(1);
+//                        beaconLeftServo.setPosition(0);
 //                    }
 //                    try
 //                    {
