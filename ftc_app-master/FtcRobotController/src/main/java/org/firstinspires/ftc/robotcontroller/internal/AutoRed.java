@@ -153,7 +153,7 @@ public class AutoRed extends BotHardware
 //                        }catch (InterruptedException e){
 //                            telemetry.addData("ERROR", e.getStackTrace()[0]);
 //                        }
-//                        beaconRightServo.setPosition(1);
+//                        beaconRightServo.setPosition(0);
 //                        beaconLeftServo.setPosition(0);
 //                    }
 //                    else
@@ -168,7 +168,7 @@ public class AutoRed extends BotHardware
 //                        {
 //                            telemetry.addData("ERROR", e.getStackTrace()[0]);
 //                        }
-//                        beaconRightServo.setPosition(0);
+//                        beaconRightServo.setPosition(1);
 //                        beaconLeftServo.setPosition(1);
 //                    }
 //                    try
