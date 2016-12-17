@@ -7,8 +7,7 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 public class AutoBlue extends BotHardware
 {
     @Override
-    public void runOpMode() throws InterruptedException
-    {
+    public void runOpMode() throws InterruptedException {
         super.runOpMode();
 
         short state = 0;
@@ -92,39 +91,11 @@ public class AutoBlue extends BotHardware
 //                    break;
 //                case 7: //drive forward until good distance for measuring color of beacon
 //                case 15:
-//                    if(sonar.getUltrasonicLevel() < 21)
-//                    {
-//                        far = good = 0;
-//                        close++;
-//                    }
-//                    else if (sonar.getUltrasonicLevel() > 24)
-//                    {
-//                        close = good = 0;
-//                        far++;
-//                    }
-//                    else
-//                    {
-//                        close = far = 0;
-//                        good++;
-//                    }
-//
-//                    if (close == 2)
-//                    {
-//                        setPower(-0.1f);
-//                        close = 0;
-//                    }
-//                    else if (far == 2)
-//                    {
-//                        setPower(0.1f);
-//                        far = 0;
-//                    }
-//                    else if (good == 2)
-//                    {
-//                        setPower(0);
-//                        state++;
-//                        close = far = good = 0;
-//                    }
-//                    break;
+//                    setPower(0.35f);
+//                      if(getTime() > 1){
+//                          setPower(0f);
+//                          break;
+//                      }
 //                case 8: //beacon pusher
 //                case 16:
 //                    try

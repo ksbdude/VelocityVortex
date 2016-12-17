@@ -29,8 +29,8 @@ public class BotHardware extends LinearOpMode
 //    ModernRoboticsI2cGyro gyro;
 //    UltrasonicSensor sonar;
 //    ColorSensor ground;
-//    ColorSensor beaconLeft;
-//    ColorSensor beaconRight;
+    ColorSensor beaconLeft;
+    ColorSensor beaconRight;
     public int good = 0;
 
     int state = 0;
@@ -45,8 +45,8 @@ public class BotHardware extends LinearOpMode
             wfl = hardwareMap.dcMotor.get("wfl");
             wbl = hardwareMap.dcMotor.get("wbl");
 
-            wbr.setDirection(DcMotor.Direction.REVERSE);
-            wfr.setDirection(DcMotor.Direction.REVERSE);
+            wbl.setDirection(DcMotor.Direction.REVERSE);
+            wfl.setDirection(DcMotor.Direction.REVERSE);
 
             wfr.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODERS);
             wbr.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODERS);
@@ -82,24 +82,24 @@ public class BotHardware extends LinearOpMode
 //        {
 //            telemetry.addData("[ERROR]:", "color sensor setup");
 //        }
-//        //BEACON LEFT COLOR SENSOR
-//        try
-//        {
-//            beaconLeft = hardwareMap.colorSensor.get("beaconLeft");
-//        }
-//        catch (Exception e)
-//        {
-//            telemetry.addData("[Error]:", "left beacon color sensor setup");
-//        }
-//        //BEACON RIGHT COLOR SENSOR
-//        try
-//        {
-//            beaconRight = hardwareMap.colorSensor.get("beaconRight");
-//        }
-//        catch (Exception e)
-//        {
-//            telemetry.addData("[Error]:", "right beacon color sensor setup");
-//        }
+        //BEACON LEFT COLOR SENSOR
+        try
+        {
+            beaconLeft = hardwareMap.colorSensor.get("beaconLeft");
+        }
+        catch (Exception e)
+        {
+            telemetry.addData("[Error]:", "left beacon color sensor setup");
+        }
+        //BEACON RIGHT COLOR SENSOR
+        try
+        {
+            beaconRight = hardwareMap.colorSensor.get("beaconRight");
+        }
+        catch (Exception e)
+        {
+            telemetry.addData("[Error]:", "right beacon color sensor setup");
+        }
 //        //ULTRASONIC DISTANCE SENSOR
 //        try
 //        {
@@ -126,8 +126,8 @@ public class BotHardware extends LinearOpMode
     {
         wfl.setPower(left);
         wbl.setPower(left);
-        wfr.setPower(-right);
-        wbr.setPower(-right);
+        wfr.setPower(right);
+        wbr.setPower(right);
     }
 
     public void setPower(float power)
