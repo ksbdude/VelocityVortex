@@ -82,6 +82,7 @@ public class BotHardware extends LinearOpMode
 //        {
 //            telemetry.addData("[ERROR]:", "color sensor setup");
 //        }
+        //helo
         //BEACON LEFT COLOR SENSOR
         try
         {
